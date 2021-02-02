@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, getRepository, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -7,6 +7,19 @@ export class User {
     id: string;
 
     @Column()
-    username: string;
+    emailAddress: string;
+
+    @Column()
+    password: string;
+
+    public static async exists(emailAddress: string): Promise<User | undefined> {
+        const userRepo = getRepository(User);
+
+        return await userRepo.findOne({
+            where: {
+                emailAddress: emailAddress.toLowerCase()
+            }
+        });
+    }
 
 }
