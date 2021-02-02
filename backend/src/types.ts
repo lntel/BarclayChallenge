@@ -12,4 +12,5 @@ export interface ValidatorOptions {
     key: string;
     name?: string;
     optional?: boolean;
+    expression?: RegExp;
 }
