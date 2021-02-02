@@ -9,7 +9,8 @@ const config: Config = {
     dbPort: (process.env.DB_PORT as unknown as number) || 5432,
     dbUser: process.env.DB_USER || 'postgres',
     dbPass: process.env.DB_PASS || 'test',
-    dbName: process.env.DB_NAME || 'barclay'
+    dbName: process.env.DB_NAME || 'barclay',
+    saltRounds: (process.env.SALT_ROUNDS as unknown as number) || 12
 }
 
 
