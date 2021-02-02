@@ -9,5 +9,7 @@ export interface Config {
 }
 
 export interface ValidatorOptions {
-
+    key: string;
+    name?: string;
+    optional?: boolean;
 }
