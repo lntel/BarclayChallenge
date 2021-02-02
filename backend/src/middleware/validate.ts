@@ -10,10 +10,23 @@ export const validate = (e: ValidatorOptions | ValidatorOptions[]) => {
         if((e as ValidatorOptions[]).length) {
 
         } else {
+
+            const name = (e as ValidatorOptions).name ? (e as ValidatorOptions).name : (e as ValidatorOptions).key;
+
             if(bodyKeys.length) {
+
+                // Check if the bodyKeys array contains the ValidationOption key
                 if(bodyKeys.indexOf((e as ValidatorOptions).key) == -1) {
                     return res.status(400).send({
-                        message: `${(e as ValidatorOptions).name ? (e as ValidatorOptions).name : (e as ValidatorOptions).key} parameter was not found`
+                        message: `${name} parameter was not found`
+                    });
+                }
+
+                const value = req.body[(e as ValidatorOptions).key];
+
+                if((e as ValidatorOptions).expression && !value.match((e as ValidatorOptions).expression)) {
+                    return res.status(400).send({
+                        message: `${name} is invalid`
                     });
                 }
             } else {
