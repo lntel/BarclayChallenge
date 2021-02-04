@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../entity/user";
 
-import { hashSync } from 'bcrypt'
+import { compareSync, hashSync } from 'bcrypt'
 import config from "../config";
 import { getRepository } from "typeorm";
 import { signToken } from "../helpers/token";
@@ -58,6 +58,36 @@ export const login = async (req: Request, res: Response) => {
                 message: 'This email address does not exist'
             });
         }
+
+        if(!compareSync(password, result.password)) {
+            return res.status(401).send({
+                message: 'You have entered an invalid password, please try again'
+            });
+        }
+
+        const tokenObject =  {
+            emailAddress: result.emailAddress,
+            id: result.id
+        };
+
+        const accessToken = signToken('access', tokenObject);
+        const refreshToken = signToken('refresh', tokenObject);
+
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 15
+        });
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24 * 7
+        });
+
+        res.send({
+            message: 'Successfully signed in, please wait',
+            accessToken: accessToken,
+            refreshToken: refreshToken
+        });
 
     }
     catch(err) {
