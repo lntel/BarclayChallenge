@@ -6,6 +6,8 @@ import { User } from './entity/user';
 
 import userRouter from './routes/user'
 
+import cookieParser from 'cookie-parser'
+
 (async () => {
     const app = express();
 
@@ -25,6 +27,7 @@ import userRouter from './routes/user'
 
         console.log(`Posgresql -> Online`);
 
+        app.use(cookieParser());
         app.use(express.json());
 
         app.use('/api/v1/user', userRouter);
