@@ -34,6 +34,8 @@ export const validate = (e: ValidatorOptions | ValidatorOptions[]) => {
                     message: 'No parameters found'
                 });
             }
+
+            next();
         }
 
     }
