@@ -6,7 +6,13 @@ export interface Config {
     dbPass: string;
     dbName: string;
     saltRounds: number;
+    refreshSecret: string;
+    refreshExpiry: string;
+    accessSecret: string;
+    accessExpiry: string;
 }
+
+export type TokenType = | 'access' | 'refresh';
 
 export interface ValidatorOptions {
     key: string;
