@@ -4,6 +4,7 @@ import { User } from "../entity/user";
 import { hashSync } from 'bcrypt'
 import config from "../config";
 import { getRepository } from "typeorm";
+import { signToken } from "../helpers/token";
 
 export const createUser = async (req: Request, res: Response) => {
 
@@ -38,8 +39,29 @@ export const createUser = async (req: Request, res: Response) => {
     }
 }
 
-export const login = (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response) => {
 
-    res.send('test')
+    const { emailAddress, password } = req.body;
+
+    try {
+
+        const userRepo = getRepository(User);
+
+        const result = await userRepo.findOne({
+            where: {
+                emailAddress: emailAddress.toLowerCase()
+            }
+        });
+
+        if(!result) {
+            return res.status(404).send({
+                message: 'This email address does not exist'
+            });
+        }
+
+    }
+    catch(err) {
+        console.error(err);
+    }
 
 }
