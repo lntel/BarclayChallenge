@@ -10,7 +10,11 @@ const config: Config = {
     dbUser: process.env.DB_USER || 'postgres',
     dbPass: process.env.DB_PASS || 'test',
     dbName: process.env.DB_NAME || 'barclay',
-    saltRounds: (process.env.SALT_ROUNDS as unknown as number) || 12
+    saltRounds: (process.env.SALT_ROUNDS as unknown as number) || 12,
+    refreshSecret: process.env.REFRESH_SECRET || 'refreshtoken',
+    accessSecret: process.env.ACCESS_SECRET || 'accesstoken',
+    accessExpiry: process.env.ACCESS_EXPIRY || '15m',
+    refreshExpiry: process.env.REFRESH_EXPIRY || '1w'
 }
 
 
