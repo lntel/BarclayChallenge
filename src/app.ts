@@ -30,6 +30,8 @@ import cookieParser from 'cookie-parser'
         app.use(cookieParser());
         app.use(express.json());
 
+        app.use(express.static('public'));
+
         app.use('/api/v1/user', userRouter);
         
         app.listen(config.apiPort, () => {
