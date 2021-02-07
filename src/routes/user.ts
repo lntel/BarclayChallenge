@@ -11,4 +11,7 @@ router.post('/', validate(createUserValidator), createUser);
 // Login to a user account
 router.post('/login', login);
 
+// Refresh the access token
+router.post('/token', )
+
 export default router;
