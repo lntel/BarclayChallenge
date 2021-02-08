@@ -5,6 +5,7 @@ import config from './config';
 import { User } from './entity/user';
 
 import userRouter from './routes/user'
+import paymentRouter from './routes/payment'
 
 import cookieParser from 'cookie-parser'
 
@@ -33,6 +34,7 @@ import cookieParser from 'cookie-parser'
         app.use(express.static('public'));
 
         app.use('/api/v1/user', userRouter);
+        app.use('/api/v1/payment', paymentRouter);
         
         app.listen(config.apiPort, () => {
             console.log(`http://${config.host}:${config.apiPort} -> Online`);
