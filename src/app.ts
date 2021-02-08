@@ -13,6 +13,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { Site } from './entity/site';
 import { Hairdresser } from './entity/hairdresser';
+import { Payment } from './entity/payment';
 
 (async () => {
     const app = express();
@@ -29,7 +30,8 @@ import { Hairdresser } from './entity/hairdresser';
             entities: [
                 User,
                 Site,
-                Hairdresser
+                Hairdresser,
+                Payment
             ]
         });
 
