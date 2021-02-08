@@ -10,6 +10,7 @@ export interface Config {
     refreshExpiry: string;
     accessSecret: string;
     accessExpiry: string;
+    barclaySecret: string;
 }
 
 export type TokenType = | 'access' | 'refresh';

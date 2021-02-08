@@ -5,6 +5,7 @@ import { compareSync, hashSync } from 'bcrypt'
 import config from "../config";
 import { getRepository } from "typeorm";
 import { signToken } from "../helpers/token";
+import { verify } from "jsonwebtoken";
 
 export const createUser = async (req: Request, res: Response) => {
 
@@ -87,6 +88,35 @@ export const login = async (req: Request, res: Response) => {
             message: 'Successfully signed in, please wait',
             accessToken: accessToken,
             refreshToken: refreshToken
+        });
+
+    }
+    catch(err) {
+        console.error(err);
+    }
+
+}
+
+export const refreshToken = (req: Request, res: Response) => {
+
+    const { refreshToken } = req.body;
+
+    try {
+        const result = (verify(refreshToken, config.refreshSecret) as any);
+
+        const accessToken = signToken('access', {
+            emailAddress: result.emailAddress,
+            id: result.id
+        });
+
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 15
+        });
+
+        res.send({
+            message: 'Access token has been refreshed',
+            accessToken: accessToken
         });
 
     }

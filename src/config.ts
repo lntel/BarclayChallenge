@@ -14,7 +14,8 @@ const config: Config = {
     refreshSecret: process.env.REFRESH_SECRET || 'refreshtoken',
     accessSecret: process.env.ACCESS_SECRET || 'accesstoken',
     accessExpiry: process.env.ACCESS_EXPIRY || '15m',
-    refreshExpiry: process.env.REFRESH_EXPIRY || '1w'
+    refreshExpiry: process.env.REFRESH_EXPIRY || '1w',
+    barclaySecret: process.env.BARCLAY_SECRET || 'b8ede88ad60e33d5b0b4f07c969eaa0c'
 }
 
 
