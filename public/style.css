@@ -41,3 +41,11 @@ img:hover {
   padding: 25px;
 
 }
+
+.img-fluid{
+  max-width: 140px;
+
+}
+.img-fluid:hover {
+  filter: grayscale(1);
+}
