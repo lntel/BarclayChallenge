@@ -10,6 +10,7 @@ import paymentRouter from './routes/payment'
 
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import { Site } from './entity/site';
 
 (async () => {
     const app = express();
@@ -24,7 +25,8 @@ import cookieParser from 'cookie-parser'
             database: config.dbName,
             synchronize: true,
             entities: [
-                User
+                User,
+                Site
             ]
         });
 
