@@ -7,10 +7,12 @@ import { User } from './entity/user';
 import userRouter from './routes/user'
 import siteRouter from './routes/site'
 import paymentRouter from './routes/payment'
+import hairRouter from './routes/hairdresser'
 
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { Site } from './entity/site';
+import { Hairdresser } from './entity/hairdresser';
 
 (async () => {
     const app = express();
@@ -26,7 +28,8 @@ import { Site } from './entity/site';
             synchronize: true,
             entities: [
                 User,
-                Site
+                Site,
+                Hairdresser
             ]
         });
 
@@ -42,6 +45,7 @@ import { Site } from './entity/site';
         app.use('/api/v1/user', userRouter);
         app.use('/api/v1/site', siteRouter);
         app.use('/api/v1/payment', paymentRouter);
+        app.use('/api/v1/hairdresser', hairRouter);
         
         app.listen(config.apiPort, () => {
             console.log(`http://${config.host}:${config.apiPort} -> Online`);
