@@ -41,7 +41,9 @@ export const getAllSites = async (req: Request, res: Response) => {
     try {
         const siteRepo = getRepository(Site);
 
-        const result = await siteRepo.find();
+        const result = await siteRepo.find({
+            relations: ['hairdressers']
+        });
 
         res.send(result);
     }
@@ -51,10 +53,43 @@ export const getAllSites = async (req: Request, res: Response) => {
 
 }
 
-export const deleteById = (req: Request, res: Response) => {
+export const deleteById = async (req: Request, res: Response) => {
 
-    const { id } = req.params;
+    const { siteId } = req.params;
 
-    console.log(id)
+    try {
+        
+        const siteRepo = getRepository(Site);
+
+        const exists = await siteRepo.findOne(siteId);
+
+        if(!exists) {
+            return res.status(404).send({
+                message: `Site ${siteId} does not exist`
+            });
+        }
+
+        await siteRepo.remove(exists);
+
+        res.send({
+            message: `Site ${siteId} deleted`
+        });
+        
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export const update = async (req: Request, res: Response) => {
+
+    try {
+        
+
+
+    } catch (error) {
+        console.error(error);
+    }
 
 }
