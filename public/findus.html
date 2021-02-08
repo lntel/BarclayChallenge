@@ -65,15 +65,25 @@
       // Initialize and add the map
       function initMap() {
         // The location of Barbers
-        const barbers = { lat: 52.237644, lng: -0.8900366 };
+        const barbersNorthants = { lat: 52.237644, lng: -0.8900366 };
+        const barbersWell = { lat: 52.3015559, lng:-0.6950157 };
+        const barbersRugby = { lat: 52.3690949, lng: -1.2614884 };
         // The map, centered at Barbers
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 10,
-          center: barbers,
+          center: barbersNorthants,
         });
         // The marker, positioned at Barbers
         const marker = new google.maps.Marker({
-          position: barbers,
+          position: barbersNorthants,
+          map: map,
+        });
+        const marker2 = new google.maps.Marker({
+          position: barbersWell,
+          map: map,
+        });
+        const marker3 = new google.maps.Marker({
+          position: barbersRugby,
           map: map,
         });
       }
