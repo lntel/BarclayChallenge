@@ -9,6 +9,32 @@ export const validate = (e: ValidatorOptions | ValidatorOptions[]) => {
 
         if((e as ValidatorOptions[]).length) {
 
+            if(bodyKeys.length) {
+
+
+                (e as ValidatorOptions[]).map(v => {
+                    const name = v.name ? v.name : v.key;
+    
+                    if(bodyKeys.indexOf(v.key) == -1) {
+                        return res.status(400).send({
+                            message: `${name} parameter was not found`
+                        });
+                    }
+
+                    const value = req.body[v.key];
+
+                    if(v.expression && !value.match(v.expression)) {
+                        return res.status(400).send({
+                            message: `${name} is invalid`
+                        });
+                    }
+                });
+            } else {
+                return res.status(400).send({
+                    message: 'No parameters found'
+                });
+            }
+
         } else {
 
             const name = (e as ValidatorOptions).name ? (e as ValidatorOptions).name : (e as ValidatorOptions).key;
