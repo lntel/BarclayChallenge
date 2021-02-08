@@ -14,7 +14,7 @@
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-5" style="background-color: #3C3C3C;">
     <div class="container-fluid">
         <a class="navbar-brand position-absolute top-0 start-50 translate-middle-x" href="index.html">
-          <img src="img/Asset 4@3x.png" class="img-fluid"> 
+          <img alt ="Logo" src="img/Asset 4@3x.png" class="img-fluid"> 
         </a>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -50,7 +50,6 @@
 
 
 <main>
-
     <h1 class="text-center">A bit about us</h1>
     <h4 class="text-center"> Established in 2010 and situated in Northampton’s Iconic Town Centre and set amongst some of the towns’ finest stores, pubs and restaurants. Sher Locks Combs offer the finest mens hairdressing and barbers services in Northampton. <br>      Step inside and you will find a classically styled Gentleman’s Barber shop. Dark wood cabinets complimented by marble work surfaces and antique brass fittings, Classic red Belmont barber chairs and an Edwardian chesterfield sofa complete the look to give a calm and relaxing atmosphere.
       <br>
@@ -58,11 +57,12 @@
 
     <h1 class="text-center">Find Us</h1>
     <h4 class="text-center">We have multiple locations across Northamptonshire</h4>
-
+  
+    <div class="container-xxl">
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
-        height: 50%;
+        height: 500px;
         width: 50%;
       }
     </style>
@@ -92,12 +92,14 @@
           map: map,
         });
       }
+      
     </script>
+  </div>
   </head>
   <body>
 
     <!--The div element for the map -->
-    <div class="position-absolute top-50 start-50 translate-middle" id="map"></div>
+    <div class="position-absolute bottom-0 start-50 translate-middle-x" id="map"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
