@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3C3C3C;">
+    <div class="container-fluid">
+        <a class="navbar-brand position-absolute top-0 start-50 translate-middle-x" href="index.html">Shear-Locks Combs</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="aboutus.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown link
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+      </ul>
+      <form action="login.html">
+      <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
+      <form action="signup.html">
+        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        </form>
+        <form action="signup.html">
+          <button class="btn btn-outline-info" type="submit">Sign Up</button>
+          </form>
+      </div>
+    </div>
+</nav>
+
+
+<main>
+
+  
+
+    <h1 class="text-center">Find Us</h1>
+    <h4 class="text-center">We have multiple locations accross Northamptonshire</h4>
+
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 50%;
+        width: 50%;
+      }
+    </style>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Barbers
+        const barbersNorthants = { lat: 52.237644, lng: -0.8900366 };
+        const barbersWell = { lat: 52.3015559, lng:-0.6950157 };
+        const barbersRugby = { lat: 52.3690949, lng: -1.2614884 };
+        // The map, centered at Barbers
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: barbersNorthants,
+        });
+        // The marker, positioned at Barbers
+        const marker = new google.maps.Marker({
+          position: barbersNorthants,
+          map: map,
+        });
+        const marker2 = new google.maps.Marker({
+          position: barbersWell,
+          map: map,
+        });
+        const marker3 = new google.maps.Marker({
+          position: barbersRugby,
+          map: map,
+        });
+      }
+    </script>
+  </head>
+  <body>
+
+    <!--The div element for the map -->
+    <div class="position-absolute top-50 start-50 translate-middle" id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLlX0HtW625Jk2Lplw4Oexr-f88UjkC1Q&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </main>
+  </body>
+</html>

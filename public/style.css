@@ -1,4 +1,37 @@
 
 body{
   background-color: #222222;
+  color: antiquewhite;
+}
+
+.main_img {
+  max-height: 60vh;
+  background-size: auto;
+  background-repeat: no-repeat;
+  filter:grayscale(100%);
+}
+
+img:hover {
+  filter: blur(4px)
+}
+
+.row {
+  padding: 15px;
+  max-height: 35vh;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.small_img {
+  border-radius: 8px;
+  max-width: 150px;
+  height: auto;
+  filter:grayscale(100%);
+
+}
+
+.card {
+  background-color: rgb(27, 23, 23);
+  padding: 15px;
 }
