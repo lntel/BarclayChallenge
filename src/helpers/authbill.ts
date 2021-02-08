@@ -3,8 +3,8 @@ import config from '../config'
 
 import btoa from 'btoa'
 
-interface Transaction {
-
+interface Payment {
+    
 }
 
 export const sign = (data: any) => {
