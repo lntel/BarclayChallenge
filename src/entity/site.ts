@@ -7,19 +7,9 @@ export class Site {
     id: string;
 
     @Column()
-    emailAddress: string;
+    address: string;
 
     @Column()
-    password: string;
-
-    public static async exists(emailAddress: string): Promise<Site | undefined> {
-        const userRepo = getRepository(Site);
-
-        return await userRepo.findOne({
-            where: {
-                emailAddress: emailAddress.toLowerCase()
-            }
-        });
-    }
+    postcode: string;
 
 }

@@ -9,13 +9,21 @@ import { verify } from "jsonwebtoken";
 
 export const createUser = async (req: Request, res: Response) => {
 
-    const { emailAddress, password, mobileNumber } = req.body;
+    const { emailAddress, password, mobileNumber, forename, surname } = req.body;
 
-    const emailExists = await User.exists(emailAddress);
+    const emailExists = await User.exists('emailAddress', emailAddress);
     
     if(emailExists) {
         return res.status(409).send({
             message: 'This email address is already in use'
+        });
+    }
+    
+    const mobileExists = await User.exists('mobileNumber', mobileNumber);
+    
+    if(mobileExists) {
+        return res.status(409).send({
+            message: 'This mobile number is already in use'
         });
     }
 
@@ -27,6 +35,8 @@ export const createUser = async (req: Request, res: Response) => {
         user.emailAddress = emailAddress.toLowerCase();
         user.password = hashSync(password, config.saltRounds);
         user.mobileNumber = mobileNumber;
+        user.forename = forename;
+        user.surname = surname;
     
         const result = await userRepo.save(user);
 
@@ -69,7 +79,11 @@ export const login = async (req: Request, res: Response) => {
 
         const tokenObject =  {
             emailAddress: result.emailAddress,
-            id: result.id
+            id: result.id,
+            forename: result.forename,
+            surname: result.surname,
+            admin: result.admin,
+            mobile: result.mobileNumber
         };
 
         const accessToken = signToken('access', tokenObject);
@@ -107,7 +121,11 @@ export const refreshToken = (req: Request, res: Response) => {
 
         const accessToken = signToken('access', {
             emailAddress: result.emailAddress,
-            id: result.id
+            id: result.id,
+            forename: result.forename,
+            surname: result.surname,
+            admin: result.admin,
+            mobile: result.mobileNumber
         });
 
         res.cookie('accessToken', accessToken, {

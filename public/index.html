@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+  <script src="./js/request.js"></script>
+  <script src="app.js" defer></script>
 </head>
 
 
@@ -55,7 +61,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/bg_01.jpg" class="d-block w-100 h-100" alt="...">
+      <img src="img/bg_01.jpg" class="d-block w-100 h-100 main_img" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h2>Make a booking</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -63,7 +69,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="img/bg_02.jpg" class="d-block w-100" alt="...">
+      <img src="img/bg_02.jpg" class="d-block w-100 main_img" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -82,8 +88,45 @@
 </div>
 
 
+<div class="container-fluid bottom_page">
+<div class="row">
+
+  <div class="col-lg-4 col-md-12">
+  <div class="card">
+    <img class="card-img-top small_img" src="img/small_01.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Our Staff</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
 
 
+<div class="col-lg-4 col-md-12">
+  <div class="card">
+    <img class="card-img-top small_img" src="img/small_02.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Pricing</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-12">
+  <div class="card">
+    <img class="card-img-top small_img" src="img/small_03.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Vouchers</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
 
 
 </main>      
@@ -95,6 +138,6 @@
 
 </footer>
 
-
 </body>
+
 </html>
