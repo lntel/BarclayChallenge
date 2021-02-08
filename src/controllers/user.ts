@@ -9,7 +9,7 @@ import { verify } from "jsonwebtoken";
 
 export const createUser = async (req: Request, res: Response) => {
 
-    const { emailAddress, password } = req.body;
+    const { emailAddress, password, mobileNumber } = req.body;
 
     const emailExists = await User.exists(emailAddress);
     
@@ -26,6 +26,7 @@ export const createUser = async (req: Request, res: Response) => {
     
         user.emailAddress = emailAddress.toLowerCase();
         user.password = hashSync(password, config.saltRounds);
+        user.mobileNumber = mobileNumber;
     
         const result = await userRepo.save(user);
 

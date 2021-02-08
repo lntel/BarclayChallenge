@@ -1,25 +1,19 @@
 import { Column, Entity, getRepository, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class User {
+export class Appointment {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({ unique: true })
+    @Column()
     emailAddress: string;
-
-    @Column({ unique: true })
-    mobileNumber: string;
 
     @Column()
     password: string;
 
-    @Column({ default: false })
-    admin: boolean;
-
-    public static async exists(emailAddress: string): Promise<User | undefined> {
-        const userRepo = getRepository(User);
+    public static async exists(emailAddress: string): Promise<Appointment | undefined> {
+        const userRepo = getRepository(Appointment);
 
         return await userRepo.findOne({
             where: {
