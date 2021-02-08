@@ -27,9 +27,11 @@ img:hover {
   border-radius: 8px;
   max-width: 150px;
   height: auto;
+  filter:grayscale(100%);
 
 }
 
 .card {
   background-color: rgb(27, 23, 23);
+  padding: 15px;
 }
