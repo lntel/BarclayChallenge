@@ -6,7 +6,8 @@ body{
 
 .main_img {
   max-height: 60vh;
-  background-size: auto;
+  background-size: cover;
+  object-fit: cover;
   background-repeat: no-repeat;
   filter:grayscale(100%);
 }

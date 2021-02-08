@@ -1,4 +1,5 @@
-import { Column, Entity, getRepository, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, getRepository, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Payment } from "./payment";
 
 @Entity()
 export class User {
@@ -24,6 +25,9 @@ export class User {
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     joinDate: string;
 
+    @OneToMany(() => Payment, payment => payment.users)
+    payments: Payment[];
+
     @Column({ default: false })
     admin: boolean;
 
@@ -35,6 +39,17 @@ export class User {
                 [key]: value.toLowerCase()
             }
         });
+    }
+
+    public static async isAdmin(id: string) {
+        const userRepo = getRepository(User);
+
+        return await (userRepo.findOne({
+            where: {
+                id: id,
+                admin: true
+            }
+        }));
     }
 
 }

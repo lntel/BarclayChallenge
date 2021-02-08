@@ -4,6 +4,7 @@ import { sign } from '../helpers/authbill'
 import fetch from 'node-fetch'
 import { uuidv4 } from "../helpers/uuid";
 import FormData from 'form-data'
+import moment from 'moment'
 
 export const processPayment = (req: Request, res: Response) => {
 
@@ -23,42 +24,48 @@ export const processPayment = (req: Request, res: Response) => {
     //     bill_to_surname
     // } = req.body;
 
+    const payment = req.body;
+
+    payment.transaction_uuid = uuidv4();
+    payment.reference_number = uuidv4();
+    payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
+
+    const form = new FormData();
+
     const { signed_field_names } = req.body;
 
-    const payment = req.body;
-    
-    payment.transaction_uuid = uuidv4(),
-    payment.reference_number = uuidv4(),
-    payment.signed_date_time = new Date().toISOString();
-    
+    const signedFieldNames = signed_field_names.split(',');
+
     let result: string[] = [];
-    let fields: string = '';
-    const signedFields = signed_field_names.split(',');
 
-    signedFields.map((field: string, i: number) => {
-        result.push(`${field}=${req.body[field]}`)
-    })
+    signedFieldNames.map((signedField: string) => {
+        result.push(`${signedField}=${payment[signedField]}`);
+        form.append(signedField, payment[signedField]);
+    });
 
-    fields = result.join(',');
+    //return console.log(form)
 
-    const data = new FormData();
+    form.append('signature', sign(result.join(',')));
+    
+    // fetch('https://testsecureacceptance.cybersource.com/pay', {
+    //     method: 'POST',
+    //     body: form
+    // })
+    // .then(async res => {
+    //     console.log(await res.text())
+    // })
 
-    Object.keys(payment).map(key => {
-        data.append(key, payment[key])
-    })
+    form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
+        if(err) {
+            return res.status(500).send({
+                message: 'An error occurred'
+            });
+        }
 
-    //return console.log(fields)
+        res.send({
+            message: 'Payment successful',
 
-    data.append('signature', sign(fields))
-
-    console.log(data)
-
-    fetch('https://testsecureacceptance.cybersource.com/pay', {
-        method: 'POST',
-        body: data
-    })
-    .then(async response => {
-        console.log(await response.text())
+        });
     })
 
 }

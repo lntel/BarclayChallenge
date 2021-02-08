@@ -1,20 +1,29 @@
-import { createHmac } from 'crypto'
+import { HmacSHA256, enc } from 'crypto-js'
 import config from '../config'
 
 import btoa from 'btoa'
+import { createHmac } from 'crypto'
+import hash from 'hash.js'
 
 interface Payment {
     
 }
 
-export const sign = (data: any) => {
-    return btoa(createHmac('sha256', config.barclaySecret).digest(data));
+export const sign = (data: string) => {
+
+    console.log(data)
+
+    // return createHmac('sha256', config.barclaySecret, {
+    //     encoding: 'binary',
+    // }).update(data).digest('base64');
+    //return HmacSHA256(data, config.barclaySecret).toString(enc.Hex)
+    return HmacSHA256(data, config.barclaySecret).toString(enc.Base64);
+
+    //return HmacSHA256(data, config.barclaySecret).toString()
 }
 
 const authbill = () => {
-    console.log(sign({
-        test: 12
-    }))
+
 }
 
 export default authbill;
