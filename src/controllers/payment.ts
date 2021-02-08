@@ -23,42 +23,32 @@ export const processPayment = (req: Request, res: Response) => {
     //     bill_to_surname
     // } = req.body;
 
+    const payment = req.body;
+
+    payment.transaction_uuid = uuidv4();
+    payment.reference_number = uuidv4();
+    payment.signed_date_time = new Date().toISOString();
+
+    const form = new FormData();
+
     const { signed_field_names } = req.body;
 
-    const payment = req.body;
-    
-    payment.transaction_uuid = uuidv4(),
-    payment.reference_number = uuidv4(),
-    payment.signed_date_time = new Date().toISOString();
-    
+    const signedFieldNames = signed_field_names.split(',');
+
     let result: string[] = [];
-    let fields: string = '';
-    const signedFields = signed_field_names.split(',');
 
-    signedFields.map((field: string, i: number) => {
-        result.push(`${field}=${req.body[field]}`)
-    })
+    signedFieldNames.map((signedField: string) => {
+        result.push(`${signedField}=${payment[signedField]}`);
+        form.append(signedField, payment[signedField]);
+    });
 
-    fields = result.join(',');
+    return console.log(sign(result.join(',')))
 
-    const data = new FormData();
+    form.append('signature', sign(result.join(',')));
 
-    Object.keys(payment).map(key => {
-        data.append(key, payment[key])
-    })
-
-    //return console.log(fields)
-
-    data.append('signature', sign(fields))
-
-    console.log(data)
-
-    fetch('https://testsecureacceptance.cybersource.com/pay', {
-        method: 'POST',
-        body: data
-    })
-    .then(async response => {
-        console.log(await response.text())
+    form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
+        console.log(err);
+        console.log(response.statusCode)
     })
 
 }
