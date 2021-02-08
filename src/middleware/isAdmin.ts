@@ -24,6 +24,9 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     }
     catch(err) {
         console.error(err);
+        return res.status(401).send({
+            message: 'You must be signed in'
+        });
     }
 
 }
