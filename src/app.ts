@@ -7,6 +7,7 @@ import { User } from './entity/user';
 import userRouter from './routes/user'
 import paymentRouter from './routes/payment'
 
+import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 (async () => {
@@ -27,6 +28,8 @@ import cookieParser from 'cookie-parser'
         });
 
         console.log(`Posgresql -> Online`);
+
+        app.use(cors());
 
         app.use(cookieParser());
         app.use(express.json());
