@@ -4,6 +4,7 @@ import { sign } from '../helpers/authbill'
 import fetch from 'node-fetch'
 import { uuidv4 } from "../helpers/uuid";
 import FormData from 'form-data'
+import moment from 'moment'
 
 export const processPayment = (req: Request, res: Response) => {
 
@@ -27,7 +28,9 @@ export const processPayment = (req: Request, res: Response) => {
 
     payment.transaction_uuid = uuidv4();
     payment.reference_number = uuidv4();
-    payment.signed_date_time = new Date().toISOString();
+    payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
+
+    console.log(payment.signed_date_time)
 
     const form = new FormData();
 
@@ -42,13 +45,21 @@ export const processPayment = (req: Request, res: Response) => {
         form.append(signedField, payment[signedField]);
     });
 
-    return console.log(sign(result.join(',')))
+    //return console.log(sign(result.join(',')))
 
     form.append('signature', sign(result.join(',')));
-
-    form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
-        console.log(err);
-        console.log(response.statusCode)
+    
+    fetch('https://testsecureacceptance.cybersource.com/pay', {
+        method: 'POST',
+        body: form
     })
+    .then(async res => {
+        console.log(res.status)
+    })
+
+    // form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
+    //     console.log(err);
+    //     console.log(response.statusMessage)
+    // })
 
 }
