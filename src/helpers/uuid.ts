@@ -1,6 +1,13 @@
-export const uuidv4 = () => {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
+import Math from 'mathjs'
+
+export const uuidv4 = (a = "", b = false) => {
+    const c = Date.now()/1000;
+    let d = c.toString(16).split(".").join("");
+    while(d.length < 14) d += "0";
+    let e = "";
+    if(b){
+        e = ".";
+        e += Math.round(Math.random()*100000000);
+    }
+    return a + d + e;
+}
