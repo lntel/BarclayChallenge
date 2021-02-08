@@ -6,7 +6,7 @@ body{
 
 img {
   max-height: 60vh;
-  background-size: auto
+  background-size: auto;
   background-repeat: no-repeat;
-
+  filter:grayscale(100%);
 }
