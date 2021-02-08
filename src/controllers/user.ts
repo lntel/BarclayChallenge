@@ -27,8 +27,6 @@ export const createUser = async (req: Request, res: Response) => {
         });
     }
 
-
-
     try {
         const userRepo = getRepository(User);
     
@@ -81,7 +79,11 @@ export const login = async (req: Request, res: Response) => {
 
         const tokenObject =  {
             emailAddress: result.emailAddress,
-            id: result.id
+            id: result.id,
+            forename: result.forename,
+            surname: result.surname,
+            admin: result.admin,
+            mobile: result.mobileNumber
         };
 
         const accessToken = signToken('access', tokenObject);
@@ -119,7 +121,11 @@ export const refreshToken = (req: Request, res: Response) => {
 
         const accessToken = signToken('access', {
             emailAddress: result.emailAddress,
-            id: result.id
+            id: result.id,
+            forename: result.forename,
+            surname: result.surname,
+            admin: result.admin,
+            mobile: result.mobileNumber
         });
 
         res.cookie('accessToken', accessToken, {
