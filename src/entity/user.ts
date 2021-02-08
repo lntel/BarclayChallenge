@@ -1,4 +1,5 @@
-import { Column, Entity, getRepository, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, getRepository, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Payment } from "./payment";
 
 @Entity()
 export class User {
@@ -23,6 +24,9 @@ export class User {
 
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     joinDate: string;
+
+    @OneToMany(() => Payment, payment => payment.users)
+    payments: Payment[];
 
     @Column({ default: false })
     admin: boolean;
