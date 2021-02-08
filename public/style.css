@@ -4,5 +4,9 @@ body{
   color: antiquewhite;
 }
 
+img {
+  max-height: 60vh;
+  background-size: auto
+  background-repeat: no-repeat;
 
-
+}
