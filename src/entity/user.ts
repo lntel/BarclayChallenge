@@ -37,4 +37,15 @@ export class User {
         });
     }
 
+    public static async isAdmin(id: string) {
+        const userRepo = getRepository(User);
+
+        return await (userRepo.findOne({
+            where: {
+                id: id,
+                admin: true
+            }
+        }));
+    }
+
 }
