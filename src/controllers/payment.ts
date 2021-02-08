@@ -30,8 +30,6 @@ export const processPayment = (req: Request, res: Response) => {
     payment.reference_number = uuidv4();
     payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
 
-    console.log(payment.signed_date_time)
-
     const form = new FormData();
 
     const { signed_field_names } = req.body;
@@ -45,21 +43,29 @@ export const processPayment = (req: Request, res: Response) => {
         form.append(signedField, payment[signedField]);
     });
 
-    //return console.log(sign(result.join(',')))
+    //return console.log(form)
 
     form.append('signature', sign(result.join(',')));
     
-    fetch('https://testsecureacceptance.cybersource.com/pay', {
-        method: 'POST',
-        body: form
-    })
-    .then(async res => {
-        console.log(res.status)
-    })
-
-    // form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
-    //     console.log(err);
-    //     console.log(response.statusMessage)
+    // fetch('https://testsecureacceptance.cybersource.com/pay', {
+    //     method: 'POST',
+    //     body: form
     // })
+    // .then(async res => {
+    //     console.log(await res.text())
+    // })
+
+    form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
+        if(err) {
+            return res.status(500).send({
+                message: 'An error occurred'
+            });
+        }
+
+        res.send({
+            message: 'Payment successful',
+
+        });
+    })
 
 }
