@@ -13,17 +13,26 @@ export class User {
     mobileNumber: string;
 
     @Column()
+    forename: string;
+
+    @Column()
+    surname: string;
+
+    @Column()
     password: string;
+
+    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+    joinDate: string;
 
     @Column({ default: false })
     admin: boolean;
 
-    public static async exists(emailAddress: string): Promise<User | undefined> {
+    public static async exists(key: string, value: string): Promise<User | undefined> {
         const userRepo = getRepository(User);
 
         return await userRepo.findOne({
             where: {
-                emailAddress: emailAddress.toLowerCase()
+                [key]: value.toLowerCase()
             }
         });
     }

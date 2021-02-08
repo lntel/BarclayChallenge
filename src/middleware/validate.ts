@@ -29,6 +29,8 @@ export const validate = (e: ValidatorOptions | ValidatorOptions[]) => {
                         });
                     }
                 });
+
+                next();
             } else {
                 return res.status(400).send({
                     message: 'No parameters found'

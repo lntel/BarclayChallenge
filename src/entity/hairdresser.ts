@@ -7,19 +7,13 @@ export class Hairdresser {
     id: string;
 
     @Column()
-    emailAddress: string;
+    forename: string;
 
     @Column()
-    password: string;
+    surname: string;
 
-    public static async exists(emailAddress: string): Promise<Hairdresser | undefined> {
-        const userRepo = getRepository(Hairdresser);
-
-        return await userRepo.findOne({
-            where: {
-                emailAddress: emailAddress.toLowerCase()
-            }
-        });
+    public fullname() {
+        return `${this.forename} ${this.surname}`;
     }
 
 }

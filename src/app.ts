@@ -5,8 +5,10 @@ import config from './config';
 import { User } from './entity/user';
 
 import userRouter from './routes/user'
+import siteRouter from './routes/site'
 import paymentRouter from './routes/payment'
 
+import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 (async () => {
@@ -28,12 +30,15 @@ import cookieParser from 'cookie-parser'
 
         console.log(`Posgresql -> Online`);
 
+        app.use(cors());
+
         app.use(cookieParser());
         app.use(express.json());
 
         app.use(express.static('public'));
 
         app.use('/api/v1/user', userRouter);
+        app.use('/api/v1/site', siteRouter);
         app.use('/api/v1/payment', paymentRouter);
         
         app.listen(config.apiPort, () => {
