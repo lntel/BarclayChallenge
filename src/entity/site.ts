@@ -12,4 +12,7 @@ export class Site {
     @Column()
     postcode: string;
 
+    @Column()
+    landline: string;
+
 }
