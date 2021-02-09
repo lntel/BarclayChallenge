@@ -25,7 +25,7 @@ export const processPayment = (req: Request, res: Response) => {
     //payment.user_id = req.params.id;
     payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
 
-    console.log(payment)
+    console.log(payment.signed_date_time)
 
     const form = new FormData();
 

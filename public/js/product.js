@@ -19,7 +19,7 @@ const getProducts = async () => {
                 <h5 class="card-title">${product.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">£${product.price}</h6>
                 <p class="card-text">${product.description}</p>
-                <a href="#" class="btn btn-primary">Add to basket</a>
+                <a href="#" class="btn btn-primary" data-id="${product.id}">Add to basket</a>
                 <div class="card-footer text-muted mt-3">
                     ${product.quantity} in stock
                 </div>
@@ -29,6 +29,16 @@ const getProducts = async () => {
 
             row.appendChild(e);
         });
+
+        const btns = document.querySelectorAll('.btn.btn-primary');
+
+        Array.from(btns).map(btn => {
+            btn.addEventListener('click', (e) => {
+                addBasketItem(products.data.find(product => product.id == e.target.dataset.id));
+            })
+        })
+
+        console.log(btns)
 
     } catch (error) {
         console.error(error);
