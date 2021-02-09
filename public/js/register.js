@@ -1,5 +1,7 @@
 const signupbtn = document.querySelector('#signupbtn');
 
+const msgbox = document.querySelector('#myAlert');
+
 signupbtn.addEventListener('click', async (e) => {
     e.preventDefault();
 
@@ -21,6 +23,38 @@ signupbtn.addEventListener('click', async (e) => {
         type: 'POST',
         data: data
     });
+
+    if(response.status === 200) {
+        // document.cookie += ''
+
+        msgbox.classList.add('alert-success');
+
+        msgbox.style.display = 'block';
+
+        msgbox.innerHTML = `
+        <strong>Success!</strong> ${response.data.message}
+        `;
+
+        const x = setTimeout(() => {
+            msgbox.style.display = 'none';
+            clearTimeout(x);
+        }, 3000);
+
+        
+    } else {
+        msgbox.classList.add('alert-danger');
+
+        msgbox.style.display = 'block';
+
+        msgbox.innerHTML = `
+        <strong>Success!</strong> ${response.data.message}
+        `;
+
+        const x = setTimeout(() => {
+            msgbox.style.display = 'none';
+            clearTimeout(x);
+        }, 3000);
+    }
 
     console.log(response)
 })

@@ -19,19 +19,53 @@ loginBtn.addEventListener('click', async (e) => {
             }
         });
 
+        console.log(response.status)
+
         if(response.status === 200) {
             // document.cookie += ''
 
+            msgbox.classList.add('alert-success');
+
             msgbox.style.display = 'block';
+
+            msgbox.innerHTML = `
+            <strong>Success!</strong> ${response.data.message}
+            `;
 
             const x = setTimeout(() => {
                 msgbox.style.display = 'none';
+                clearTimeout(x);
             }, 3000);
+
             
+        } else {
+            msgbox.classList.add('alert-danger');
+
+            msgbox.style.display = 'block';
+
+            msgbox.innerHTML = `
+            <strong>Success!</strong> ${response.data.message}
+            `;
+
+            const x = setTimeout(() => {
+                msgbox.style.display = 'none';
+                clearTimeout(x);
+            }, 3000);
         }
 
     }
     catch(err) {
-        $('#msgbox').toast(option)
+        msgbox.classList.add('alert-danger');
+
+            msgbox.style.display = 'block';
+
+            msgbox.innerHTML = `
+            <strong>Error!</strong> An error occurred
+            `;
+
+            const x = setTimeout(() => {
+                msgbox.style.display = 'none';
+                clearTimeout(x);
+            }, 3000);
     }
 })
