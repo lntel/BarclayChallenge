@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createService, getAllServices } from "../controllers/service";
+import { createService, deleteService, getAllServices } from "../controllers/service";
 import isAdmin from "../middleware/isAdmin";
 import isLoggedIn from "../middleware/isLoggedIn";
 
@@ -9,6 +9,6 @@ router.get('/', getAllServices)
 
 router.post('/', isAdmin, createService)
 
-router.delete('/:serviceId', isAdmin, )
+router.delete('/:serviceId', isAdmin, deleteService)
 
 export default router;
