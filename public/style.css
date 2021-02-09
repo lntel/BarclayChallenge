@@ -85,7 +85,10 @@ img:hover {
 
 }
 
-
+.img-fluid {
+  max-width: 140;
+  height: auto;
+}
 .img-fluid:hover {
   filter: grayscale(1);
 }
