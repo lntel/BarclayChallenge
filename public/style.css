@@ -88,3 +88,8 @@ img:hover {
 .img-fluid:hover {
   filter: grayscale(1);
 }
+
+.form-group {
+padding: 20px;
+
+}
