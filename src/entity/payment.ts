@@ -8,18 +8,15 @@ export class Payment {
     id: string;
 
     @Column()
-    emailAddress: string;
-
-    @Column()
     locale: string;
     
     @Column()
     transaction_type: string;
     
     @Column()
-    reference_number: number;
+    reference_number: string;
     
-    @Column()
+    @Column({ type: 'decimal' })
     amount: number;
 
     @Column()
@@ -27,11 +24,8 @@ export class Payment {
     
     @Column()
     signed_date_time: Date;    
-    
-    @Column()
-    access_key: string;
 
     @ManyToOne(() => User, user => user.payments)
-    users: User;
+    user: User;
 
 }
