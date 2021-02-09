@@ -71,6 +71,13 @@
   <main>
     <!--Some images on top-->
 
+    <div class="position-absolute bottom-30 start-50 translate-middle-x">
+      <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
+        <strong>Success!</strong> Item Added.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+
     <div class="container-fluid bottom_page">
       <div class="row">
 
@@ -80,7 +87,7 @@
             <div class="card-body">
               <h5 class="card-title">Our shampoo</h5>
               <p class="card-text">The best shanpoo in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -92,7 +99,7 @@
             <div class="card-body">
               <h5 class="card-title">Our hairgel</h5>
               <p class="card-text">The best hairgel in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -103,7 +110,7 @@
             <div class="card-body">
               <h5 class="card-title">Our shower gel</h5>
               <p class="card-text">The best shower gel in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -114,7 +121,7 @@
             <div class="card-body">
               <h5 class="card-title">Our shampoo</h5>
               <p class="card-text">The best shanpoo in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -126,7 +133,7 @@
             <div class="card-body">
               <h5 class="card-title">Our hairgel</h5>
               <p class="card-text">The best hairgel in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -137,7 +144,7 @@
             <div class="card-body">
               <h5 class="card-title">Our shower gel</h5>
               <p class="card-text">The best shower gel in the world</p>
-              <a href="#" class="buy btn btn-primary">Add to basket</a>
+              <a href="#"  onclick="myFunction()" class="buy btn btn-primary">Add to basket</a>
             </div>
           </div>
         </div>
@@ -163,3 +170,16 @@
 </body>
 
 </html>
+
+
+<script>
+  var myAlert = document.getElementById('myAlert')
+  myAlert.style.display="none";
+  function myFunction() {
+    
+    myAlert.style.display="inline";
+    
+
+
+  }
+</script>
