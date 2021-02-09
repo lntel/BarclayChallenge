@@ -57,18 +57,18 @@
             </svg>
           </a>
         </div>
-        <form action="login.html">
+        <a href="login.html">
           <button class="btn btn-outline-success me-2" type="submit">Login</button>
-        </form>
-        <form action="signup.html">
+        </a>
+        <a href="signup.html">
           <button class="btn btn-outline-info" type="submit">Sign Up</button>
-        </form>
+        </a>
       </div>
     </div>
   </nav>
 
   <div class="position-absolute bottom-30 start-50 translate-middle-x">
-    <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" id="myAlert" role="alert">
       <strong>Success!</strong> You have Logged In.
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -105,7 +105,7 @@
               <label for="exampleInputPassword1">Password <a href="/forgot_password">(Forgot Password?)</a></label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password ">
             </div>
-            <button id="login" onclick="myFunction()" class="btn btn-sm btn-primary">Log In</button>
+            <button id="login-btn" class="btn btn-sm btn-primary">Log In</button>
           </form>
         </div>
       </div>
