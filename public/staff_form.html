@@ -82,37 +82,56 @@
             </div>
           </nav>
 
+
 <main>
 
-      
-<div style="text-align: right;"><form action="staff_form.html"><button class="btn btn-primary" type="submit">Add new</button></form></div>
-    
-      <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Staff forename</th>
-                <th scope="col">Staff surname</th>
-                <th scope="col">Description</th>
-                <th scope="col">Site</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
+      <div class="col-lg-4 col-lg-offset-4 text-center position-absolute top-50 start-50 translate-middle" style="margin-top:10px">
 
-              <tr>
-                <th scope="row">1</th>
-                <td>Cosmin</td>
-                <td>iordahce</td>
-                <td>barber</td>
-                <td>Northampton</td>
-                <td><button class="btn btn-primary" type="submit">Delete</button></td>
-              </tr>
-              
-              
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Add a new person</strong></h3>
+        </div>
+        <div class="panel-body">
 
-            </tbody>
-          </table>
+          <form role="form">
+            <div class="form-group">
+
+              <p>Please Fill Out The Required Info.</p>
+              
+              <label for="firstname">Staff First Name</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Staff First Name">
+            </div>
+
+            <div class="form-group">
+              <label for="surname">Staff Surname</label>
+              <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <input type="description" class="form-control" id="description" name="description" placeholder="Description">
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="site">Site:</label>
+              <input type="text" class="form-control" id="site" name="site" placeholder="Site">
+            </div>
+
+
+            <button id="add_staff" class="btn btn-sm btn-primary">Add staff</button>
+          </form>
+        </div>
+        <div>
+
+
+
+
+
+
+
+
 
 
 
