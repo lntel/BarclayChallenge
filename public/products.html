@@ -77,6 +77,13 @@
   <main>
     <!--Some images on top-->
 
+    <div class="position-absolute bottom-30 start-50 translate-middle-x">
+      <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
+        <strong>Success!</strong> Item Added.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+
     <div class="container-fluid bottom_page">
       <div class="row">
 
@@ -101,3 +108,16 @@
 </body>
 
 </html>
+
+
+<script>
+  var myAlert = document.getElementById('myAlert')
+  myAlert.style.display="none";
+  function myFunction() {
+    
+    myAlert.style.display="inline";
+    
+
+
+  }
+</script>
