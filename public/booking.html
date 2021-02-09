@@ -13,6 +13,7 @@
   </script>
   <script src="./js/request.js"></script>
   <script src="app.js" defer></script>
+  <script src="./js/booking.js" defer></script>
 </head>
 
 
@@ -48,23 +49,23 @@
             </ul>
           </li>
         </ul>
-        <form action="login.html">
+        <a href="login.html">
           <button class="btn btn-outline-success me-2" type="submit">Login</button>
-        </form>
-        <form action="signup.html">
+        </a>
+        <a href="signup.html">
           <button class="btn btn-outline-info" type="submit">Sign Up</button>
-        </form>
+        </a>
       </div>
     </div>
   </nav>
   <main>
 
-    
-  <div class="position-absolute bottom-30 start-50 translate-middle-x">
-    <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
-      <strong>Success!</strong> Booking Succesful!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+
+    <div class="position-absolute bottom-30 start-50 translate-middle-x">
+      <div class="alert alert-dismissible fade show" id="myAlert" role="alert">
+        <strong>Success!</strong> Booking Succesful!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
 
 
@@ -112,18 +113,18 @@
             </div>
 
             <div>
-              <label for="site">Select a time</label>
-              <select name="sites" id="sites" class="form-select">
-                <option value="wellingborough">12:00</option>
-                <option value="rugby">13:00</option>
-                <option value="northampton">13:30</option>
-                <option value="wellingborough">14:00</option>
-                <option value="wellingborough">17:00</option>
+              <label for="time">Select a time</label>
+              <select name="time" id="time" class="form-select">
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="17:00">17:00</option>
               </select>
             </div>
 
 
-            <button id="bookbtn" class="btn btn-sm btn-primary" onclick="myFunction()">Book Now</button>
+            <button id="bookbtn" class="btn btn-sm btn-primary">Book Now</button>
           </form>
         </div>
         <div>
@@ -134,12 +135,13 @@
 
 <script>
   var myAlert = document.getElementById('myAlert')
-  myAlert.style.display="none";
+  myAlert.style.display = "none";
+
   function myFunction() {
-    
-    myAlert.style.display="inline";
-    
+
+    myAlert.style.display = "inline";
+
 
 
   }
-  </script>
+</script>
