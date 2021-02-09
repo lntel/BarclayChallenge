@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { processPayment } from "../controllers/payment";
+import { getAllPayments, processPayment } from "../controllers/payment";
+import isAdmin from "../middleware/isAdmin";
+import isLoggedIn from "../middleware/isLoggedIn";
 
 
 const router = Router();
 
-router.post('/', processPayment);
+router.get('/', isAdmin, getAllPayments);
+
+router.post('/', isLoggedIn, processPayment);
 
 export default router;
