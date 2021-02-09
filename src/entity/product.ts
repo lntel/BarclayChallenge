@@ -15,6 +15,9 @@ export default class Product {
     @Column({ type: 'text' })
     description: string;
 
+    @Column({ default: 0 })
+    quantity: number;
+
     @Column({ type: 'decimal' })
     price: number;
 
