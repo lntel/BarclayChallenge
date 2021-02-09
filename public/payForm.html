@@ -14,11 +14,19 @@
   </script>
   <script src="./js/request.js"></script>
   <script src="./js/index.js" defer></script>
+  
 </head>
 
 
 <body>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-5" style="background-color: #3C3C3C;">
+    <div style="position: absolute; top: 0; left: 10%;width: 30%;">
+      <div class="position-absolute bottom-30 start-100 translate-middle-x">
+        <div class="alert alert-dismissible fade show" id="myAlert" role="alert">
+          <strong>Success!</strong> You have Logged In.
+        </div>
+        </div>
+    </div>
     <div class="container-fluid">
       <a class="navbar-brand position-absolute top-0 start-50 translate-middle-x" href="index.html">
         <img alt="Logo" src="img/Asset 4@3x.png" class="img-fluid">
@@ -71,12 +79,12 @@
             </svg>
           </a>
         </div>
-        <form action="login.html">
+        <a href="login.html">
           <button class="btn btn-outline-success me-2" type="submit">Login</button>
-        </form>
-        <form action="signup.html">
+        </a>
+        <a href="signup.html">
           <button class="btn btn-outline-info" type="submit">Sign Up</button>
-        </form>
+        </a>
       </div>
     </div>
   </nav>
@@ -86,7 +94,7 @@
 
   <div class="container">
     <h2>Payment</h2>
-    <form action="payForm.html" method="" autocomplete="off">
+    <form>
 
       <div class="form-group">
         <label for="first_name">First name:</label>
@@ -114,7 +122,7 @@
       </div>
 
 
-      <button class="btn btn-outline-info" type="submit">PAY</button>
+      <button id="pay" class="btn btn-outline-info">PAY</button>
 
     </form>
   </div>
@@ -138,7 +146,34 @@
 
 
 
+  <script> 
 
+    const payBtn = document.querySelector('#pay');
+    const msgbox = document.querySelector('#myAlert');
+
+    console.log(payBtn)
+    msgbox.style.display = 'none';
+
+    payBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+        msgbox.classList.add('alert-success');
+
+        msgbox.style.display = 'block';
+
+        msgbox.innerHTML = `
+        <strong>Success!</strong> Payment successful
+        `;
+
+        const x = setTimeout(() => {
+            msgbox.style.display = 'none';
+            clearTimeout(x);
+
+            location.href = 'index.html'
+        }, 3000);
+    })
+
+  </script>
 
 
 
