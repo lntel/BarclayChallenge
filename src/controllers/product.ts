@@ -50,3 +50,32 @@ export const createProduct = async (req: Request, res: Response) => {
     }
 
 }
+export const deleteProduct = async (req: Request, res: Response) => {
+
+    const {
+        productId
+    } = req.params;
+
+    try {
+        
+        const productRepo = getRepository(Product);
+
+        const result = await productRepo.findOne(productId);
+
+        if(!result) {
+            return res.status(404).send({
+                message: `Product ${productId} was not found`
+            });
+        }
+
+        productRepo.remove(result)
+
+        res.send({
+            message: `Product ${productId} has been deleted`
+        });
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
