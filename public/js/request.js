@@ -17,6 +17,12 @@ const Request = async (endpoint, obj) => {
             const result = await response.json();
             const message = result.message;
 
+            if(message == 'You must be signed in to access this page') {
+                await Request(`http://localhost:3000/api/v1/user/token`, {
+                    type: 'POST'
+                });
+            }
+
             reject(message);
         }
     });
