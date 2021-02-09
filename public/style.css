@@ -9,6 +9,7 @@ body{
 h2{
   font-family: 'Teko', sans-serif;
 }
+
 .main_img {
   max-height: 60vh;
   background-size: cover;
@@ -81,10 +82,19 @@ img:hover {
 
 }
 
-.img-fluid{
-  max-width: 140px;
 
-}
 .img-fluid:hover {
   filter: grayscale(1);
 }
+
+@media (min-width: 360px) { 
+  .img-fluid{
+    max-width: 90px;
+    height: auto;
+  
+  }
+ }
+
+
+
+
