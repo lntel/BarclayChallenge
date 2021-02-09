@@ -14,6 +14,9 @@ export class Site {
     postcode: string;
 
     @Column()
+    city: string;
+
+    @Column()
     landline: string;
 
     @OneToMany(() => Hairdresser, hairdresser => hairdresser.site)

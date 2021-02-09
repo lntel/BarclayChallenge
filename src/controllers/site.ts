@@ -7,7 +7,8 @@ export const createSite = async (req: Request, res: Response) => {
     const {
         address,
         postcode,
-        landline
+        landline,
+        city
     } = req.body;
 
     const id = req.params.id;
@@ -21,6 +22,7 @@ export const createSite = async (req: Request, res: Response) => {
         site.address = address;
         site.postcode = postcode;
         site.landline = landline;
+        site.city = city;
 
         const result = await siteRepo.save(site);
 

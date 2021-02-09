@@ -25,7 +25,7 @@ export class User {
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     joinDate: string;
 
-    @OneToMany(() => Payment, payment => payment.users)
+    @OneToMany(() => Payment, payment => payment.user)
     payments: Payment[];
 
     @Column({ default: false })
