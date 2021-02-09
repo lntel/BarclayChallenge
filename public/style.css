@@ -87,14 +87,4 @@ img:hover {
   filter: grayscale(1);
 }
 
-@media (min-width: 360px) { 
-  .img-fluid{
-    max-width: 90px;
-    height: auto;
-  
-  }
- }
-
-
-
 
