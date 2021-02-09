@@ -4,61 +4,108 @@ import { sign } from '../helpers/authbill'
 import fetch from 'node-fetch'
 import { uuidv4 } from "../helpers/uuid";
 import FormData from 'form-data'
+import moment from 'moment'
+import { Payment } from "../entity/payment";
+import { getRepository } from "typeorm";
+import { User } from "../entity/user";
 
 export const processPayment = (req: Request, res: Response) => {
 
-    // const {
-    //     locale,
-    //     transaction_type,
-    //     amount,
-    //     currency,
-    //     access_key,
-    //     profile_id,
-    //     bill_to_address_city,
-    //     bill_to_address_country,
-    //     bill_to_address_line1,
-    //     bill_to_address_postal_code,
-    //     bill_to_email,
-    //     bill_to_forename,
-    //     bill_to_surname
-    // } = req.body;
+    const {
+        amount,
+        currency,
+        locale
+    } = req.body;
+
+    const payment = req.body;
+
+    payment.transaction_uuid = uuidv4();
+    payment.reference_number = uuidv4();
+    payment.user_id = req.params.id;
+    payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
+
+    const form = new FormData();
 
     const { signed_field_names } = req.body;
 
-    const payment = req.body;
-    
-    payment.transaction_uuid = uuidv4(),
-    payment.reference_number = uuidv4(),
-    payment.signed_date_time = new Date().toISOString();
-    
+    const signedFieldNames = signed_field_names.split(',');
+
     let result: string[] = [];
-    let fields: string = '';
-    const signedFields = signed_field_names.split(',');
 
-    signedFields.map((field: string, i: number) => {
-        result.push(`${field}=${req.body[field]}`)
+    signedFieldNames.map((signedField: string) => {
+        result.push(`${signedField}=${payment[signedField]}`);
+        form.append(signedField, payment[signedField]);
+    });
+
+    //return console.log(form)
+
+    form.append('signature', sign(result.join(',')));
+    
+    // fetch('https://testsecureacceptance.cybersource.com/pay', {
+    //     method: 'POST',
+    //     body: form
+    // })
+    // .then(async res => {
+    //     console.log(await res.text())
+    // })
+
+    form.submit('https://testsecureacceptance.cybersource.com/pay', async (err, response) => {
+        if(err) {
+            return res.status(500).send({
+                message: 'An error occurred'
+            });
+        }
+
+        try {
+            const payRepo = getRepository(Payment);
+            const userRepo = getRepository(User);
+    
+            const user = await userRepo.findOne(req.params.id)
+
+            if(!user) {
+                return res.status(404).send({
+                    message: 'User not found'
+                });
+            }
+    
+            const pay = new Payment();
+
+            pay.amount = parseFloat(amount);
+            pay.currency = currency;
+            pay.locale = locale;
+            pay.reference_number = payment.reference_number;
+            pay.signed_date_time = payment.signed_date_time;
+            pay.transaction_type = 'authorize';
+            pay.user = user;
+
+            await payRepo.save(pay);
+
+            res.send({
+                message: 'Payment successful',
+    
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
     })
 
-    fields = result.join(',');
+}
 
-    const data = new FormData();
+export const getAllPayments = async (req: Request, res: Response) => {
 
-    Object.keys(payment).map(key => {
-        data.append(key, payment[key])
-    })
+    try {
+        
+        const paymentRepo = getRepository(Payment);
 
-    //return console.log(fields)
+        const result = await paymentRepo.find({
+            relations: ['user']
+        })
 
-    data.append('signature', sign(fields))
+        res.send(result);
 
-    console.log(data)
-
-    fetch('https://testsecureacceptance.cybersource.com/pay', {
-        method: 'POST',
-        body: data
-    })
-    .then(async response => {
-        console.log(await response.text())
-    })
+    } catch (error) {
+        console.error(error);
+    }
 
 }

@@ -8,15 +8,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     const { accessToken } = req.cookies;
 
     try {
-
-        console.log("test")
         const result = verify(accessToken, config.accessSecret) as any;
-
-        if(!await User.isAdmin(result.id)) {
-            return res.status(403).send({
-                message: 'Only admins can access this route'
-            });
-        }
 
         req.params.id = result.id;
 
@@ -25,7 +17,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     catch(err) {
         console.error(err);
         return res.status(401).send({
-            message: 'You must be signed in'
+            message: 'You must be signed in to access this page'
         });
     }
 

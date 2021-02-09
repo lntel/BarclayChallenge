@@ -114,7 +114,7 @@ export const login = async (req: Request, res: Response) => {
 
 export const refreshToken = (req: Request, res: Response) => {
 
-    const { refreshToken } = req.body;
+    const { refreshToken } = req.cookies;
 
     try {
         const result = (verify(refreshToken, config.refreshSecret) as any);
