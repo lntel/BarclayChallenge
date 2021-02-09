@@ -16,3 +16,5 @@
 // })
 // .then(console.log)
 // .catch(console.error);
+
+isSignedIn();
