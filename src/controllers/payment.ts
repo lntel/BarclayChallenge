@@ -8,6 +8,7 @@ import moment from 'moment'
 import { Payment } from "../entity/payment";
 import { getRepository } from "typeorm";
 import { User } from "../entity/user";
+import { v1 } from 'uuid'
 
 export const processPayment = (req: Request, res: Response) => {
 
@@ -19,10 +20,12 @@ export const processPayment = (req: Request, res: Response) => {
 
     const payment = req.body;
 
-    payment.transaction_uuid = uuidv4();
-    payment.reference_number = uuidv4();
-    payment.user_id = req.params.id;
+    payment.transaction_uuid = v1();
+    payment.reference_number = v1();
+    //payment.user_id = req.params.id;
     payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
+
+    console.log(payment.signed_date_time)
 
     const form = new FormData();
 
@@ -36,8 +39,6 @@ export const processPayment = (req: Request, res: Response) => {
         result.push(`${signedField}=${payment[signedField]}`);
         form.append(signedField, payment[signedField]);
     });
-
-    //return console.log(form)
 
     form.append('signature', sign(result.join(',')));
     
@@ -55,6 +56,8 @@ export const processPayment = (req: Request, res: Response) => {
                 message: 'An error occurred'
             });
         }
+
+        console.log(response.statusCode)
 
         try {
             const payRepo = getRepository(Payment);
@@ -75,7 +78,7 @@ export const processPayment = (req: Request, res: Response) => {
             pay.locale = locale;
             pay.reference_number = payment.reference_number;
             pay.signed_date_time = payment.signed_date_time;
-            pay.transaction_type = 'authorize';
+            pay.transaction_type = 'authorization';
             pay.user = user;
 
             await payRepo.save(pay);

@@ -1,4 +1,5 @@
 import { Column, Entity, getRepository, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Appointment } from "./appointment";
 import { Payment } from "./payment";
 
 @Entity()
@@ -27,6 +28,9 @@ export class User {
 
     @OneToMany(() => Payment, payment => payment.user)
     payments: Payment[];
+
+    @OneToMany(() => Appointment, appointment => appointment.user)
+    appointments: Appointment[];
 
     @Column({ default: false })
     admin: boolean;

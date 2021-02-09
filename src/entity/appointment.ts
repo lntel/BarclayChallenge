@@ -1,4 +1,5 @@
-import { Column, Entity, getRepository, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./user";
 
 @Entity()
 export class Appointment {
@@ -7,19 +8,12 @@ export class Appointment {
     id: string;
 
     @Column()
-    emailAddress: string;
+    date: string;
 
     @Column()
-    password: string;
+    time: string;
 
-    public static async exists(emailAddress: string): Promise<Appointment | undefined> {
-        const userRepo = getRepository(Appointment);
-
-        return await userRepo.findOne({
-            where: {
-                emailAddress: emailAddress.toLowerCase()
-            }
-        });
-    }
+    @ManyToOne(() => User, user => user.appointments)
+    user: User;
 
 }
