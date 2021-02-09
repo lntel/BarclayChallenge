@@ -38,5 +38,39 @@ img:hover {
 
 .products {
   padding: 25px;
+}
+
+.payme {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,0,1);
+  padding: 30px;
+}
+
+.payme .title {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 3em;
+  line-height: 48px;
+  padding-bottom: 20px;
+  color: rgb(185, 179, 179);
+}
+
+.contact-form .form-field {
+  position: relative;
+  margin: 32 px 0;
+}
+
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color:silver;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
 
 }
