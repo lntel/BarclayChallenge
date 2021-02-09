@@ -5,8 +5,10 @@ import isLoggedIn from "../middleware/isLoggedIn";
 
 const router = Router();
 
-router.get('/', isLoggedIn, getAllServices)
+router.get('/', getAllServices)
 
 router.post('/', isAdmin, createService)
+
+router.delete('/:serviceId', isAdmin, )
 
 export default router;
