@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Shear-Locks Combs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Teko:wght@700&display=swap"
+  rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+  <script src="./js/request.js"></script>
+  <script src="./js/index.js" defer></script>
+</head>
+
+
+<body>
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark p-5" style="background-color: #3C3C3C;">
+            <div class="container-fluid">
+              <a class="navbar-brand position-absolute top-0 start-50 translate-middle-x" href="index.html">
+                <img alt="Logo" src="img/Asset 4@3x.png" class="img-fluid">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="products.html">Products</a></li>
+                          <li><a class="dropdown-item" href="booking.html">Booking</a></li>
+                        </ul>
+                      </li>
+        
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Admin tools
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li style="text-align: center;"><a class="dropdown-item" href="admin_staff.html#">Staff add/delete</a></li>
+                          <li style="text-align: center;">*</li>
+                          <li style="text-align: center;"><a class="dropdown-item" href="admin_products.html">Products add/delete</a></li>
+                          <li style="text-align: center;"> *</li>
+                          <li style="text-align: center;"><a class="dropdown-item" href="admin_services.html">Services add/delete</a></li>
+                        </ul>
+                      </li>
+                </ul>
+                <div class="basket_icon">
+                  <a href="basket.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                  </a>
+                </div>
+                <form action="login.html">
+                  <button class="btn btn-outline-success me-2" type="submit">Login</button>
+                </form>
+                <form action="signup.html">
+                  <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+
+
+<main>
+
+      <div class="col-lg-4 col-lg-offset-4 text-center position-absolute top-50 start-50 translate-middle" style="margin-top:10px">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Add a new service</strong></h3>
+        </div>
+        <div class="panel-body">
+
+          <form role="form">
+            <div class="form-group">
+
+              <p>Please Fill Out The Required Info.</p>
+              
+              <label for="name">Service Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Service Name">
+            </div>
+
+            <div class="form-group">
+              <label for="price">Service price</label>
+              <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+            </div>
+
+  
+            <button id="add_staff" class="btn btn-sm btn-primary">Add service</button>
+          </form>
+        </div>
+        <div>
+
+
+</main>
+</html>
