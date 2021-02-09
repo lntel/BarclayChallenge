@@ -65,7 +65,7 @@
     
   </nav>
 
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
     <strong>Success!</strong> You have successfully created your account.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
@@ -100,7 +100,7 @@
               <input type="password" class="form-control" id="passwordconfirm" name="passwordconfirm"
                 placeholder="Confirm Password ">
             </div>
-            <button id="signupbtn" class="btn btn-sm btn-primary">Sign Up</button>
+            <button id="signupbtn" onclick="myFunction()" class="btn btn-sm btn-primary">Sign Up</button>
           </form>
         </div>
       </div>
@@ -108,3 +108,15 @@
 </body>
 
 </html>
+
+<script>
+  var myAlert = document.getElementById('myAlert')
+  myAlert.style.display="none";
+  function myFunction() {
+    
+    myAlert.style.display="inline";
+    
+
+
+  }
+  </script>
