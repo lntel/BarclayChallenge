@@ -57,43 +57,65 @@
     </div>
   </nav>
 <main>
-  <form action="payForm.html" method="" autocomplete="off">
+  <div class="container position-absolute top-50 start-50 translate-middle" style="margin-top:30px">
+    <div class="col-lg-4 col-lg-offset-3 ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Sign Up </strong></h3>
+        </div>
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group">
 
-    <div class="form-group">
-      <label for="first_name">First name:</label>
-      <input type="first_name" class="form-control" id="first_name" placeholder="First name" name="first_name">
-    </div>
+              <p>Please Fill Out The Required Info.</p>
+              <label for="firstname">First Name</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name ">
+            </div>
+            
+            <div class="form-group">
+              <label for="surname">Surname</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name ">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address ">
+            </div>
+            <div class="form-group">
+              <label for="phone_number">Contact Number</label>
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number ">
+            </div>
+            
+            <div>
+              <label for="site">Select a site</label>
+               <select name="sites" id="sites"class="form-select">
+                <option value="rugby">Rugby</option>
+                <option value="northampton">Northampton</option>
+                <option value="wellingborough">Wellingborough</option>
+              </select>
+            </div>
 
-    <div class="form-group">
-        <label for="last_name">Last name:</label>
-        <input type="last_name" class="form-control" id="last_name" placeholder="Last name" name="last_name">
-    </div>
+            <div class="form-group">
+              <label for="date">Select a Date</label>
+              <input type="date" class="form-control" id="date" name="date" >
+            </div>
 
-    <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-    </div>
-    <div class="form-group">
-      <label for="phone_number">Phone Number:</label>
-      <input type="phone_number" class="form-control" id="phone_number" placeholder="Phone Number" name="phone_number">
-  </div>
-
-    <div class="form-group">
-        <label for="site">Site:</label>
-        <select name="site" id="site">
-          <option value="rugby">Rugby</option>
-          <option value="wellingborough">Wellingborough</option>
-          <option value="northampton">Northampton</option>
-          
-        </select>
-        
-    </div>
-
-    
-
-    <button class="btn btn-outline-info" type="submit">Book Now</button>
-
-  </form>
+            <div>
+              <label for="site">Select a time</label>
+               <select name="sites" id="sites"class="form-select">
+                <option value="wellingborough">12:00</option>
+                <option value="rugby">13:00</option>
+                <option value="northampton">13:30</option>
+                <option value="wellingborough">14:00</option>
+                <option value="wellingborough">17:00</option>
+              </select>
+            </div>
+              
+            
+            <button id="bookbtn" class="btn btn-sm btn-primary">Book Now</button>
+          </form>
+        </div>
+      </div>
+      <div>
 </main>
 </body>
 </html>
