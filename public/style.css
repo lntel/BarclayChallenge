@@ -2,8 +2,13 @@
 body{
   background-color: #222222;
   color: antiquewhite;
+  font-family: 'Inter', sans-serif;
 }
 
+
+h2{
+  font-family: 'Coda Caption', sans-serif;
+}
 .main_img {
   max-height: 60vh;
   background-size: cover;
@@ -33,11 +38,19 @@ img:hover {
 }
 
 .card {
-  background-color: rgb(27, 23, 23);
+  background-color: #444444;
   padding: 15px;
 }
 
 .products {
   padding: 25px;
 
+}
+
+.img-fluid{
+  max-width: 140px;
+
+}
+.img-fluid:hover {
+  filter: grayscale(1);
 }
