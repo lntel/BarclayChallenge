@@ -68,8 +68,8 @@
 
     <div class="position-absolute bottom-30 start-50 translate-middle-x">
       <div class="alert alert-success alert-dismissible fade show" id="myAlert" role="alert">
-        <strong>Success!</strong> Checkout Success!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Success!</strong>
+        <button type="button" onclick="closeAlert()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       </div>
 
@@ -80,7 +80,7 @@
                         <h5 class="card-title">Product_1</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                        <div style="text-align: center;" ><a href="#" class="btn btn-primary">Delete</a> </div>
+                        <div style="text-align: center;" ><button class="btn btn-primary" onclick = "myFunction()">Delete</button> </div>
                   </div>
             </div>
             
@@ -88,7 +88,7 @@
         <div class="card-body">
           <h5 class="card-title">Product_2</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <div style="text-align: center;" ><a href="#" class="btn btn-primary">Delete</a> </div>
+          <div style="text-align: center;" ><button class="btn btn-primary" onclick = "myFunction()">Delete</button> </div>
         </div>
       </div>
     </div>
@@ -104,11 +104,14 @@
 <script>
   var myAlert = document.getElementById('myAlert')
   myAlert.style.display="none";
-  function myFunction() {
-    
+  function myFunction() { 
     myAlert.style.display="inline";
     
-
-
   }
-  </script>
+  function closeAlert() { 
+    window.location.replace("basket.html");
+    var myAlert = document.getElementById('myAlert')
+    myAlert.style.display="none";
+    
+  }
+</script>
