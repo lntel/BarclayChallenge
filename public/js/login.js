@@ -17,6 +17,9 @@ loginBtn.addEventListener('click', async (e) => {
             }
         });
 
+        if(response.status === 200) {
+            // document.cookie += ''
+        }
 
     }
     catch(err) {
