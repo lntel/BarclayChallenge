@@ -5,29 +5,23 @@ import fetch from 'node-fetch'
 import { uuidv4 } from "../helpers/uuid";
 import FormData from 'form-data'
 import moment from 'moment'
+import { Payment } from "../entity/payment";
+import { getRepository } from "typeorm";
+import { User } from "../entity/user";
 
 export const processPayment = (req: Request, res: Response) => {
 
-    // const {
-    //     locale,
-    //     transaction_type,
-    //     amount,
-    //     currency,
-    //     access_key,
-    //     profile_id,
-    //     bill_to_address_city,
-    //     bill_to_address_country,
-    //     bill_to_address_line1,
-    //     bill_to_address_postal_code,
-    //     bill_to_email,
-    //     bill_to_forename,
-    //     bill_to_surname
-    // } = req.body;
+    const {
+        amount,
+        currency,
+        locale
+    } = req.body;
 
     const payment = req.body;
 
     payment.transaction_uuid = uuidv4();
     payment.reference_number = uuidv4();
+    payment.user_id = req.params.id;
     payment.signed_date_time = new Date().toISOString().slice(0, 19) + 'Z'
 
     const form = new FormData();
@@ -62,10 +56,56 @@ export const processPayment = (req: Request, res: Response) => {
             });
         }
 
-        res.send({
-            message: 'Payment successful',
+        try {
+            const payRepo = getRepository(Payment);
+            const userRepo = getRepository(User);
+    
+            const user = await userRepo.findOne(req.params.id)
 
-        });
+            if(!user) {
+                return res.status(404).send({
+                    message: 'User not found'
+                });
+            }
+    
+            const pay = new Payment();
+
+            pay.amount = parseFloat(amount);
+            pay.currency = currency;
+            pay.locale = locale;
+            pay.reference_number = payment.reference_number;
+            pay.signed_date_time = payment.signed_date_time;
+            pay.transaction_type = 'authorize';
+            pay.user = user;
+
+            await payRepo.save(pay);
+
+            res.send({
+                message: 'Payment successful',
+    
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
     })
+
+}
+
+export const getAllPayments = async (req: Request, res: Response) => {
+
+    try {
+        
+        const paymentRepo = getRepository(Payment);
+
+        const result = await paymentRepo.find({
+            relations: ['user']
+        })
+
+        res.send(result);
+
+    } catch (error) {
+        console.error(error);
+    }
 
 }
