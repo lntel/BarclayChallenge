@@ -70,6 +70,9 @@ img:hover {
   margin: 32 px 0;
 }
 
+.img-fluid{
+  max-width: 100px;
+}
 .contact-form .input-text {
   display: block;
   width: 100%;
