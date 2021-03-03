@@ -41,7 +41,12 @@ import { Appointment } from './entity/appointment';
                 Service,
                 Product,
                 Appointment
-            ]
+            ],
+            extra: {
+                ssl: {
+                    rejectUnauthorized: false,
+                }
+            }
         });
 
         console.log(`Posgresql -> Online`);
