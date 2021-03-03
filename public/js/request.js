@@ -1,6 +1,6 @@
 const Request = async (endpoint, obj) => {
     return new Promise(async (resolve, reject) => {
-        const response = await fetch(`http://localhost:3000/api/v1/${endpoint}`, {
+        const response = await fetch(`https://barclaything.herokuapp.com/api/v1/${endpoint}`, {
             method: obj.type,
             headers: {
                 'Content-Type': 'application/json'
